@@ -45,8 +45,10 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - vagrant status
           - vagrant box add "bento/centos-8.0"  --provider=virtualbox
           - vagrant mutate "bento/centos-8.0"  libvirt
+          - sudo vagrant global-status
           - vagrant up
-          - vagrant ssh -c "hostnamectl"
+          - sudo vagrant global-status
+          # - vagrant ssh -c "hostnamectl"
           - echo "============================================="
 fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
       script:
@@ -79,7 +81,7 @@ fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
           - sudo vagrant up --provider=libvirt
           - sudo vagrant status
           - sudo vagrant global-status
-          - sudo vagrant ssh -c "hostnamectl"
+          # - sudo vagrant ssh -c "hostnamectl"
           - sudo virsh list --all #show all running KVM/libvirt VMs
 fleet_script_tasks : &fleet_script_tasks
       script:
