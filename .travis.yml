@@ -57,7 +57,8 @@ fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
           - sudo libvirtd --version
           - egrep -c '(vmx|svm)' /proc/cpuinfo #If 0 it means that your CPU doesn't support hardware virtualization.If 1 or more it does - but you still need to make sure that virtualization is enabled in the BIOS.
           - sudo addgroup libvirtd
-          - sudo adduser
+          - sudo adduser  $(id -un) libvirtd #ensure that your username is added to the group libvirtd
+          - sudo kvm-ok
           - echo "============================================="
           - echo "=============Installing Vagrant=============="
           - sudo wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
