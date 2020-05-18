@@ -43,11 +43,11 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
           - vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
           - vagrant status
-          - vagrant box add "bento/centos-7.7"  --provider=virtualbox
-          - vagrant mutate "bento/centos-7.7"  libvirt
-          - sudo vagrant global-status
-          - vagrant up
-          - sudo vagrant global-status
+          - vagrant box add "bento/centos-8.0"  --provider=virtualbox
+          - vagrant mutate "bento/centos-8.0"  libvirt
+          - vagrant global-status
+          - vagrant up --provider=libvirt
+          - vagrant global-status
           # - vagrant ssh -c "hostnamectl"
           - echo "============================================="
 fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
@@ -72,8 +72,8 @@ fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
           - sudo vagrant box add "bento/centos-8.0" --provider=virtualbox
           - sudo vagrant mutate "bento/centos-8.0" libvirt
           - sudo vagrant up --provider=libvirt
-          - vagrant box list #veridy installed boxes
-          - vagrant status #Check the status of the VMs to see that none of them have been created yet
+          - sudo vagrant box list #veridy installed boxes
+          - sudo vagrant status #Check the status of the VMs to see that none of them have been created yet
           # - sudo vagrant up --provider=libvirt vg-irods01
           # - sudo vagrant up --no-parallel --provider=libvirt # vagrant serial runs
           # - travis_wait 30 sudo vagrant up --provider=libvirt
