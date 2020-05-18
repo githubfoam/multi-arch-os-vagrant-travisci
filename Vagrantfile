@@ -2,13 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bento/centos-8.0"  #archlinux/archlinux
+  config.vm.box = "archlinux/archlinux"  #archlinux/archlinux
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
 
   config.vm.define "gluster1" do |gluster|
     gluster.vm.network "private_network", ip: "192.168.33.11"
-    config.vm.box = "bento/centos-8.0"
+    # config.vm.box = "bento/centos-8.0"
   end
 
   config.vm.define "gluster2" do |gluster|

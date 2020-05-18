@@ -43,8 +43,8 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
           - vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
           - vagrant status
-          - vagrant box add "bento/centos-8.0"  --provider=virtualbox
-          - vagrant mutate "bento/centos-8.0"  libvirt
+          - vagrant box add "archlinux/archlinux"  --provider=virtualbox
+          - vagrant mutate "archlinux/archlinux"  libvirt
           - sudo vagrant global-status
           - vagrant up
           - sudo vagrant global-status
