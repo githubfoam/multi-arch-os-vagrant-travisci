@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "archlinux/archlinux"  #archlinux/archlinux
+  config.vm.box = "bento/centos-8.0"  
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
 
