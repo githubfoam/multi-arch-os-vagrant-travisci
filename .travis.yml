@@ -40,13 +40,15 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - brew search vagrant
           - brew cask install vagrant #Install Vagrant Casks
           - vagrant version
+          # The command "vagrant plugin install vagrant-libvirt" exited with 1
           - vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
           - vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
-          - vagrant status
+          # - vagrant status
           - vagrant box add "archlinux/archlinux"  --provider=virtualbox
-          - vagrant mutate "archlinux/archlinux"  libvirt
+          # qemu-img was not found in your path
+          # - vagrant mutate "archlinux/archlinux"  libvirt
           - sudo vagrant global-status
-          - vagrant up
+          # - vagrant up
           - sudo vagrant global-status
           # - vagrant ssh -c "hostnamectl"
           - echo "============================================="
@@ -300,36 +302,37 @@ matrix:
         - deactivate
 
 
+    # TESTED OK
+    # - name: "Python 3.8 on Windows"
+    #   os: windows
+    #   language: shell
+    #   env:
+    #     - PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    #   before_install:
+    #     - choco install python --version 3.8.1
+    #     - pip install virtualenv
+    #     - virtualenv $HOME/venv
+    #     - source $HOME/venv/Scripts/activate
+    #   <<: *fleet_install_tasks
+    #   <<: *fleet_script_tasks
+    #   <<: *fleet_script_vagrant_win_tasks
+    #   <<: *fleet_script_vagrant_win_scoop_tasks
+    #   after_success:
+    #     - deactivate
 
-    - name: "Python 3.8 on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH=/c/Python38:/c/Python38/Scripts:$PATH
-      before_install:
-        - choco install python --version 3.8.1
-        - pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_win_tasks
-      <<: *fleet_script_vagrant_win_scoop_tasks
-      after_success:
-        - deactivate
-
-    - name: "Python 3.7 on Windows"
-      os: windows
-      language: shell
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-      before_install:
-        - choco install python --version 3.7.3
-        - python -m pip install virtualenv
-        - virtualenv $HOME/venv
-        - source $HOME/venv/Scripts/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_win_tasks
-      <<: *fleet_script_vagrant_win_scoop_tasks
-      after_success:
-        - deactivate
+    # TESTED OK
+    # - name: "Python 3.7 on Windows"
+    #   os: windows
+    #   language: shell
+    #   env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+    #   before_install:
+    #     - choco install python --version 3.7.3
+    #     - python -m pip install virtualenv
+    #     - virtualenv $HOME/venv
+    #     - source $HOME/venv/Scripts/activate
+    #   <<: *fleet_install_tasks
+    #   <<: *fleet_script_tasks
+    #   <<: *fleet_script_vagrant_win_tasks
+    #   <<: *fleet_script_vagrant_win_scoop_tasks
+    #   after_success:
+    #     - deactivate
