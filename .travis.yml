@@ -103,6 +103,7 @@ matrix:
   fast_finish: true
   include:
 
+# Package 'libvirt-bin' has no installation candidate
     - name: "Python 3.7 on focal"
       dist: focal
       language: python
@@ -113,7 +114,7 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
 
