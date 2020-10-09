@@ -139,7 +139,7 @@ matrix:
       dist: focal
       arch: ppc64le
       language: python
-      python: 3.7
+      # python: 3.7 #Unable to download 3.7 archive. The archive may not exist. Please consider a different version
       before_install:
         - pip3 install virtualenv
         - virtualenv -p $(which python3) ~venvpy3
@@ -154,7 +154,7 @@ matrix:
       dist: focal
       arch: s390x
       language: python
-      python: 3.7
+      # python: 3.7 #Unable to download 3.7 archive. The archive may not exist. Please consider a different version
       before_install:
         - pip3 install virtualenv
         - virtualenv -p $(which python3) ~venvpy3
@@ -228,7 +228,7 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
 
