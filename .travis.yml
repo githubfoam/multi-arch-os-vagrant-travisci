@@ -135,6 +135,7 @@ matrix:
       after_success:
         - deactivate
 
+# Package 'libvirt-bin' has no installation candidate
     - name: "Python 3.7 on focal ppc64le"
       dist: focal
       arch: ppc64le
@@ -146,10 +147,11 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
 
+# Package 'libvirt-bin' has no installation candidates
     - name: "Python 3.7 on focal s390x"
       dist: focal
       arch: s390x
@@ -161,7 +163,7 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
 
