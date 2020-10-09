@@ -19,6 +19,7 @@ fleet_script_vagrant_win_scoop_tasks : &fleet_script_vagrant_win_scoop_tasks
           # - scoop install vagrant
           # - vagrant version
           - echo "============================================="
+
 fleet_script_vagrant_win_tasks : &fleet_script_vagrant_win_tasks
       script:
           - echo "============================================="
@@ -29,6 +30,7 @@ fleet_script_vagrant_win_tasks : &fleet_script_vagrant_win_tasks
           # - choco install vagrant --${VAGRANT_VERSION}
           # - vagrant version #Packages requiring reboot: - vagrant (exit code 3010)
           - echo "============================================="
+
 fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
       script:
           - echo "============================================="
@@ -41,7 +43,7 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - brew cask install vagrant #Install Vagrant Casks
           - vagrant version
           # The command "vagrant plugin install vagrant-libvirt" exited with 1
-          - vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
+          # - vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
           - vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
           # - vagrant status
           - vagrant box add "archlinux/archlinux"  --provider=virtualbox
@@ -52,6 +54,7 @@ fleet_script_vagrant_macos_tasks : &fleet_script_vagrant_macos_tasks
           - sudo vagrant global-status
           # - vagrant ssh -c "hostnamectl"
           - echo "============================================="
+
 fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
       script:
           - sudo apt-get install -y cpu-checker bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
@@ -81,7 +84,7 @@ fleet_script_vagrant_tasks : &fleet_script_vagrant_tasks
           # - sudo vagrant up --provider=libvirt vg-irods01
           # - sudo vagrant up --no-parallel --provider=libvirt # vagrant serial runs
           # - travis_wait 30 sudo vagrant up --provider=libvirt
-          - sudo vagrant up --provider=libvirt
+          # - sudo vagrant up --provider=libvirt
           - sudo vagrant status
           - sudo vagrant global-status
           # - sudo vagrant ssh -c "hostnamectl"
