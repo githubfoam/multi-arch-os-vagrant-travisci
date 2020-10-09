@@ -231,85 +231,6 @@ matrix:
       after_success:
         - deactivate
 
-    # PROBLEM #Your CPU does not support KVM extensions
-    # - name: "Python 2.7 on xenial"
-    #   dist: xenial 
-    #   language: python
-    #   python: 2.7
-    #   before_install:
-    #     - pip install virtualenv
-    #     - virtualenv -p $(which python2) ~venvpy2
-    #     - source ~venvpy2/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_tasks
-    #   after_success:
-    #     - deactivate
-
-    # - name: "Python 3.7 on xenial arm64"
-    #   os: linux
-    #   arch: arm64
-    #   dist: xenial
-    #   language: python
-    #   python: 3.7
-    #   # env:
-    #   #   - LIB_PATH="/usr/bin/shared/x86_64/v1"
-    #   # compiler:
-    #   #  - gcc
-    #   #  - clang
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_tasks
-    #   after_success:
-    #     - deactivate
-    #
-    # - name: "Python 3.7 on xenial ppc64le" #Unable to locate package osquery
-    #   os: linux
-    #   arch: ppc64le
-    #   dist: xenial
-    #   language: python
-    #   python: 3.7
-    #   # env:
-    #   #   - LIB_PATH="/usr/bin/shared/x86_64/v1"
-    #   # compiler:
-    #   #  - gcc
-    #   #  - clang
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_tasks
-    #   after_success:
-    #     - deactivate
-    #
-    # - name: "Python 3.7 on xenial s390x" #Unable to locate package osquery
-    #   os: linux
-    #   arch: s390x
-    #   dist: xenial
-    #   language: python
-    #   python: 3.7
-    #   # env:
-    #   #   - LIB_PATH="/usr/bin/shared/x86_64/v1"
-    #   # compiler:
-    #   #  - gcc
-    #   #  - clang
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_tasks
-    #   after_success:
-    #     - deactivate
-
-
     - name: "Python 3.7.5 on macOS 10.15.5 osx xcode12u"
       os: osx
       osx_image: 
@@ -349,52 +270,51 @@ matrix:
         # - brew cask uninstall multipass
         - deactivate
 
-    # - name: "Python 2.7.17 on macOS xcode10.2"
-    #   os: osx
-    #   osx_image: xcode10.2
-    #   language: shell
-    #   before_install:
-    #     - pip install virtualenv
-    #     - virtualenv -p $(which python2) ~venvpy2
-    #     - source ~venvpy2/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_macos_tasks
-    #   after_success:
-    #     - deactivate
-    #
-    #
-    #
-    #
-    # - name: "Python 3.7.5 on macOS xcode10.2"
-    #   os: osx
-    #   osx_image: xcode10.2
-    #   language: shell
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_macos_tasks
-    #   after_success:
-    #     - deactivate
-    #
-    # - name: "Python 3.7.5 on macOS xcode9.4 "
-    #   os: osx
-    #   osx_image: xcode9.4
-    #   language: shell
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #   <<: *fleet_install_tasks
-    #   <<: *fleet_script_tasks
-    #   <<: *fleet_script_vagrant_macos_tasks
-    #   after_success:
-    #     - deactivate
+    - name: "Python 2.7.17 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+      before_install:
+        - pip install virtualenv
+        - virtualenv -p $(which python2) ~venvpy2
+        - source ~venvpy2/bin/activate
+      <<: *fleet_install_tasks
+      <<: *fleet_script_tasks
+      <<: *fleet_script_vagrant_macos_tasks
+      after_success:
+        - deactivate
+    
+      
+    
+    - name: "Python 3.7.5 on macOS xcode10.2"
+      os: osx
+      osx_image: xcode10.2
+      language: shell
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      <<: *fleet_install_tasks
+      <<: *fleet_script_tasks
+      <<: *fleet_script_vagrant_macos_tasks
+      after_success:
+        - deactivate
+    
+    - name: "Python 3.7.5 on macOS xcode9.4 "
+      os: osx
+      osx_image: xcode9.4
+      language: shell
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      <<: *fleet_install_tasks
+      <<: *fleet_script_tasks
+      <<: *fleet_script_vagrant_macos_tasks
+      after_success:
+        - deactivate
 
-    # TESTED OK
+ 
     - name: "Python 3.8 on Windows"
       os: windows
       language: shell
@@ -412,7 +332,7 @@ matrix:
       after_success:
         - deactivate
 
-    # TESTED OK
+  
     - name: "Python 3.7 on Windows"
       os: windows
       language: shell
