@@ -135,6 +135,37 @@ matrix:
       after_success:
         - deactivate
 
+    - name: "Python 3.7 on focal ppc64le"
+      dist: focal
+      arch: ppc64le
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      <<: *fleet_install_tasks
+      <<: *fleet_script_tasks
+      <<: *fleet_script_vagrant_tasks
+      after_success:
+        - deactivate
+
+    - name: "Python 3.7 on focal s390x"
+      dist: focal
+      arch: s390x
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+      <<: *fleet_install_tasks
+      <<: *fleet_script_tasks
+      <<: *fleet_script_vagrant_tasks
+      after_success:
+        - deactivate
+
+
     - name: "Python 3.7 on bionic amd64"
       dist: bionic
       arch: amd64
@@ -150,6 +181,7 @@ matrix:
       after_success:
         - deactivate
 
+    # INFO: /dev/kvm does not exist
     - name: "Python 3.7 on bionic arm64" # package architecture (amd64) does not match system (arm64)
       os: linux
       arch: arm64
@@ -162,10 +194,11 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
     
+    # INFO: /dev/kvm does not exist
     - name: "Python 3.7 on bionic ppc64le" #Unable to locate package osquery
       os: linux
       arch: ppc64le
@@ -178,10 +211,11 @@ matrix:
         - source ~venvpy3/bin/activate
       <<: *fleet_install_tasks
       <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
+      # <<: *fleet_script_vagrant_tasks
       after_success:
         - deactivate
     
+    # INFO: /dev/kvm does not exist
     - name: "Python 3.7 on bionic s390x" #Unable to locate package osquery
       os: linux
       arch: s390x
