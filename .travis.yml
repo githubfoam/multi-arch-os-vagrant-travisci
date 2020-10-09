@@ -399,8 +399,9 @@ matrix:
 
 
     # TESTED OK
-    - name: "Python 3.8 on Windows"
+    - name: "Python 3.8 on Windows amd64"
       os: windows
+      arch: amd64
       language: shell
       env:
         - PATH=/c/Python38:/c/Python38/Scripts:$PATH
@@ -417,7 +418,7 @@ matrix:
         - deactivate
 
     # TESTED OK
-    - name: "Python 3.7 on Windows"
+    - name: "Python 3.7 on Windows arm64"
       os: windows
       arch: arm64
       language: shell
