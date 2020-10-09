@@ -180,20 +180,20 @@ matrix:
     #   after_success:
     #     - deactivate
 
-
-    - name: "Python 2.7 on xenial"
-      dist: xenial
-      language: python
-      python: 2.7
-      before_install:
-        - pip install virtualenv
-        - virtualenv -p $(which python2) ~venvpy2
-        - source ~venvpy2/bin/activate
-      <<: *fleet_install_tasks
-      <<: *fleet_script_tasks
-      <<: *fleet_script_vagrant_tasks
-      after_success:
-        - deactivate
+    # PROBLEM #Your CPU does not support KVM extensions
+    # - name: "Python 2.7 on xenial"
+    #   dist: xenial 
+    #   language: python
+    #   python: 2.7
+    #   before_install:
+    #     - pip install virtualenv
+    #     - virtualenv -p $(which python2) ~venvpy2
+    #     - source ~venvpy2/bin/activate
+    #   <<: *fleet_install_tasks
+    #   <<: *fleet_script_tasks
+    #   <<: *fleet_script_vagrant_tasks
+    #   after_success:
+    #     - deactivate
 
     # - name: "Python 3.7 on xenial arm64"
     #   os: linux
